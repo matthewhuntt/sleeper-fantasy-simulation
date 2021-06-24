@@ -1,7 +1,10 @@
 # sleeper-fantasy-simulation
 Simulation tools for the Sleeper fantasy football platform
 
+## Background
 One of the great honors of my life is to commission a somewhat serious fantasy football league of 12 members. For the uninitiated, fantasy football is a game wherein managers (the participants in the league) "draft" real-life football players onto their respective rosters and craft starting lineups on a weekly basis in hopes of scoring more points (based on real-life events like touchdowns scored or passes caught) than their opponents. There is a considerable amount of analysis that goes into these decisions, but in week 7, entering the home stretch of the regular season, another important question on everyone's mind is, "given the state of the league right now and the remaining matchups, what's the likelihood that I will make the playoffs?" The goal of this project is to answer that question and present the results elegantly.
+
+## Methodology
 
 "Making the playoffs" can be defined as ranking in the top half of the 12 teams after the conclusion of week 13. Furthermore, teams are ranked based on the number of head-to-head wins they accumulate, and ties are broken by the total points scored in all games.
 
@@ -10,10 +13,11 @@ So, the problem reduces to:
   2. Find the list of remaining matchups
   3. Forecast the results of the reamining matchups
   4. Tabulate the results and determine the probability that each team ranks in the top 6
+  5. Visualize the results
 
 Steps 1 and 2 are accomplished easily by connecting to the Sleeper (our fantasy football platform) API. 
 
-For the more difficult problem of step 3, I settled on the following approach:
+For the more difficult problem of steps 3 and 4, I settled on the following approach:
 
   1. For each team in the league, take the points scored in their last n=5 games as events
   2. Construct a normal distribution using these games
@@ -26,3 +30,5 @@ For the more difficult problem of step 3, I settled on the following approach:
 
 
 **Note: My league uses an "Extra Game vs. League Median" format - every week, in addition to the wins and losses awarded as a result of the head-to-head matchups, an additional win is awarded to each team that scored above the league's median score for that week (and an additional loss to the teams who did not). Because this is a realatively uncommon format, my script takes in a parameter to enable/disable this.
+
+## Usage
