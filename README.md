@@ -24,9 +24,9 @@ For the more difficult problem of steps 3 and 4, I settled on the following appr
 
   1. For each team in the league, take the points scored in their last k=5 games as events
   2. Construct a normal distribution using these games
-  3. For n=1000 runs 
-    1. For each week remaining in the season, take a random sample from every team's distribution and award a win to the higher score in each matchup, and an additional win to the top 6 scoring teams**
-    2. At the conclusion of the simulated season, tabulate the rankings and record each team's finishing rank
+  3. For n=1000 trials 
+      - For each week remaining in the season, take a random sample from every team's distribution and award a win to the higher score in each matchup, and an additional win to the top 6 scoring teams**
+      - At the conclusion of the simulated season, tabulate the rankings and record each team's finishing rank
   4. After all runs are complete, take the percentage of runs for which each team finished in each rank as their probability of finishing in that rank
   5. Sum each team's probability of making ranks 1 thru 6 - this is their probability of making the playoffs
 
@@ -50,9 +50,19 @@ Analysis from previous seasons' gamescore data showed that a team's gamescores f
 
 The choice of 5 games is based on an understanding of the way a fantasy football team is likely to change throughout the season. It balances the desire to include more data - in order to construct a more representative distribution with less impactful random effects - with the desire to include less data - in order to capture changes a team may have made (e.g., adding a valuable player or losing one to injury). Lower values were tested, but these made the model too succeptible to single high scoring or low scoring games.
 
-## Usage
+## Files
 
+- SleeperSeedingProbabilities.py - executes methodology steps 1-4 as well as half of step 5, storing the results in WeeklySeedProbabilitiesLog.csv
+- WeeklySeedProbabilitiesLog.csv - stores each week's results (each team's % chance of making the playoffs)
+- SimulationAnimation.py - creates mp4 animation video showing change in team's playoff probability throughout the season
 
+## Visualization
+
+The results are visualized in 2 ways each week - 
+  1. A heatmap matrix showing each team's results across all trials as a percentage of the total (example at the top of the document)
+  2. A video showing each team's playoff probability over time (example below)
+
+Note on video: I had a version of this animation code which used each team's photo rather than their username. Because of some issues with the way photos are displayed, I reverted back to usernames, although some of the code supporting the photos remains, commented out.
 
 
 
